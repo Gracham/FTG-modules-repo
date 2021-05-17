@@ -45,7 +45,6 @@ class timetiladult(loader.Module):
         left_second = str(count_seconds)
         if difference.days <= 0 and count_hours <= 0 and count_minutes <= 0 and count_seconds <= 0:
             await utils.answer(message, str("Red Kitters is 18!"))
-            break
         else:
             countdown_pretty = left_day + " Days" + "\n" + left_hour + " Hours" + "\n" + left_min + " Minutes" + "\n" + left_second + " Seconds" + "\n" + "Until Red Kitters is 18"
             await utils.answer(message, str(countdown_pretty))
