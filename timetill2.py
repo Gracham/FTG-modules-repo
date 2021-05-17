@@ -43,11 +43,12 @@ class newtimemod(loader.Module):
         left_hour = str(count_hours)
         left_min = str(count_minutes)
         left_second = str(count_seconds)
-        if difference.days <= 7:
+        
+        if difference.days <= 0 and count_hours <= 0 and count_minutes <= 0 and count_seconds <= 0:
+          await utils.answer(message, str("Red Kitters is 18!"))
+        elif difference.days <= 7:
           countdown_pretty = left_day + " Days" + "\n" + left_hour + " Hours" + "\n" + left_min + " Minutes" + "\n" + left_second + " Seconds" + "\n" + "Until Red Kitters is 18"
           await utils.answer(message, str(countdown_pretty))
-        elif difference.days <= 0 and count_hours <= 0 and count_minutes <= 0 and count_seconds <= 0:
-          await utils.answer(message, str("Red Kitters is 18!"))
         else:
           countdown_pretty = left_day + " Days" + "Until Red Kitters is 18"
           await utils.answer(message, str(countdown_pretty))
