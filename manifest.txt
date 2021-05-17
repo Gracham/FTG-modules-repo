@@ -20,7 +20,7 @@ stickers
 terminal
 translate
 tts
-timetill18
+timetill
 typer
 urbandictionary
 userinfo
