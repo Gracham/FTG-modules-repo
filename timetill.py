@@ -20,17 +20,17 @@ import datetime
 from .. import loader, utils
 logger = logging.getLogger(__name__)
 @loader.tds
-class TimeTilMod(loader.Module):
-    """Time Till Im 18"""  # Translateable due to @loader.tds
+class PrettyTimeTillMod(loader.Module):
+    """A Pretty Time Until im 18 mod"""  # Translateable due to @loader.tds
     strings = {"cfg_doc": "This is what is said, you can edit me with the configurator",
-               "name": "TimeTill",
+               "name": "newtime",
                "after_sleep": "We have finished sleeping!"}
 
     def __init__(self):
         self.config = loader.ModuleConfig("CONFIG_STRING", "hello", lambda m: self.strings("cfg_doc", m))
 
     @loader.unrestricted  # Security setting to change who can use the command (defaults to owner | sudo)
-    async def timeleftcmd(self, message):
+    async def TimeTillcmd(self, message):
         """Time Till I'm 18"""
 
         stop = datetime.datetime(2021, 12, 20, 0, 0, 0)
@@ -43,8 +43,12 @@ class TimeTilMod(loader.Module):
         left_hour = str(count_hours)
         left_min = str(count_minutes)
         left_second = str(count_seconds)
+        
         if difference.days <= 0 and count_hours <= 0 and count_minutes <= 0 and count_seconds <= 0:
-            await utils.answer(message, str("Red Kitters is 18!"))
+          await utils.answer(message, str("Red Kitters is 18!"))
+        elif difference.days <= 7:
+          countdown_pretty = left_day + " Days" + "\n" + left_hour + " Hours" + "\n" + left_min + " Minutes" + "\n" + left_second + " Seconds" + "\n" + "Until Red Kitters is 18"
+          await utils.answer(message, str(countdown_pretty))
         else:
-            countdown_pretty = left_day + " Days" + "\n" + left_hour + " Hours" + "\n" + left_min + " Minutes" + "\n" + left_second + " Seconds" + "\n" + "Until Red Kitters is 18"
-            await utils.answer(message, str(countdown_pretty))
+          countdown_pretty = left_day + " Days" + "Until Red Kitters is 18"
+          await utils.answer(message, str(countdown_pretty))
