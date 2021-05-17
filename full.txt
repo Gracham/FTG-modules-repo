@@ -12,7 +12,6 @@ misc
 dnd
 memes
 notes
-orangefox
 pmlog
 purge
 quicktype
@@ -36,9 +35,5 @@ stickerdumper
 iplookup
 deepfryer
 xda
-lydia
 transfersh
 corona
-orangefox
-afk
-nopm
