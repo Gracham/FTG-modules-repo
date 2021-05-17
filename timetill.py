@@ -20,10 +20,10 @@ import datetime
 from .. import loader, utils
 logger = logging.getLogger(__name__)
 @loader.tds
-class timetilmod(loader.Module):
+class TimeTilMod(loader.Module):
     """Time Till Im 18"""  # Translateable due to @loader.tds
     strings = {"cfg_doc": "This is what is said, you can edit me with the configurator",
-               "name": "timetill",
+               "name": "TimeTill",
                "after_sleep": "We have finished sleeping!"}
 
     def __init__(self):
