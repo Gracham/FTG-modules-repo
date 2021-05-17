@@ -30,7 +30,7 @@ class timetiladult(loader.Module):
         self.config = loader.ModuleConfig("CONFIG_STRING", "hello", lambda m: self.strings("cfg_doc", m))
 
     @loader.unrestricted  # Security setting to change who can use the command (defaults to owner | sudo)
-    async def timeleft(self, message):
+    async def timeleftcmd(self, message):
         """Time Till I'm 18"""
 
         stop = datetime.datetime(2021, 12, 20, 0, 0, 0)
