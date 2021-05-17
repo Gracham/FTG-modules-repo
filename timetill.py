@@ -50,5 +50,5 @@ class PrettyTimeTillMod(loader.Module):
           countdown_pretty = left_day + " Days" + "\n" + left_hour + " Hours" + "\n" + left_min + " Minutes" + "\n" + left_second + " Seconds" + "\n" + "Until Red Kitters is 18"
           await utils.answer(message, str(countdown_pretty))
         else:
-          countdown_pretty = left_day + " Days" + "Until Red Kitters is 18"
+          countdown_pretty = left_day + " Days " + "Until Red Kitters is 18"
           await utils.answer(message, str(countdown_pretty))
