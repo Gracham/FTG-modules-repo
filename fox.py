@@ -34,6 +34,7 @@ class FoxMod(loader.Module):
     async def foxcmd(self, message):
         """getsfox"""
         url = "https://sheri.bot/api/fox/"
+        r = requests.get(url)
         answer = r.json()
         imageurl = answer["url"]
         
