@@ -16,12 +16,10 @@
 
 import asyncio
 import logging
-from SheriAPI import SheriAPI
 from .. import loader, utils
-
+import requests
 logger = logging.getLogger(__name__)
 
-api = SheriAPI(token="Your Token Here")
 @loader.tds
 class FoxMod(loader.Module):
     """Description for module"""  # Translateable due to @loader.tds
@@ -35,6 +33,8 @@ class FoxMod(loader.Module):
     @loader.unrestricted  # Security setting to change who can use the command (defaults to owner | sudo)
     async def foxcmd(self, message):
         """getsfox"""
-        res = await api.get('fox')
-        url = res.url
-        await utils.answer(message, str(url))
+        url = "https://sheri.bot/api/fox/"
+        answer = r.json()
+        imageurl = answer["url"]
+        
+        await utils.answer(message, str(imageurl))
