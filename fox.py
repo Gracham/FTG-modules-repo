@@ -21,7 +21,7 @@ from .. import loader, utils
 
 logger = logging.getLogger(__name__)
 
-
+api = SheriAPI(token="Your Token Here")
 @loader.tds
 class FoxMod(loader.Module):
     """Description for module"""  # Translateable due to @loader.tds
