@@ -1,4 +1,4 @@
-# YOU ARE PROBRELY LOOKING FOR [HitaloSama's Repo](github.com/HitaloSama/FTG-modules-repo)
+# YOU ARE MOST LIKELY LOOKING FOR [HitaloSama's Repo](github.com/HitaloSama/FTG-modules-repo)
 # FTG-modules-repo
 ## AboutFTG-modules-repo
 
@@ -17,4 +17,10 @@ For the most part, all of the modules that are not my own will be the same as Hi
 3. Done, now use ".dlmod" in some chat and see the modules.
 
 # List Of Moudles made by LakesideMiners
-timetill
+- timetill
+- fox
+
+# Todo
+- [ ] Get fox module to show image properly(is it editing too fast? Or is it the sheri api? Unlikly as posting a link manuly embeds right.)
+- [ ] Make LastFM Module(use the LastFM Lib or just use requests?
+- [ ] 
