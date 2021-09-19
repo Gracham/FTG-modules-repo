@@ -33,3 +33,4 @@ stickerdumper
 iplookup
 deepfryer
 xda
+lastfm
