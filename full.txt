@@ -8,6 +8,7 @@ info
 insult
 lmgtfy
 lyrics
+lastfm
 misc
 dnd
 memes
