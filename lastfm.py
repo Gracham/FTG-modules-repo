@@ -1,4 +1,5 @@
-#    Module is by @LakesideMiners
+# Some parts are Copyright (C) LakesideMiners (@LakesideMiners) 2021-Present
+# All licensed under project license
 #    Friendly Telegram (telegram userbot)
 #    Copyright (C) 2018-2019 The Authors
 
@@ -18,6 +19,7 @@
 import asyncio
 import logging
 import requests
+import json
 from .. import loader, utils
 logger = logging.getLogger(__name__)
 
@@ -42,9 +44,17 @@ class LastfmMod(loader.Module):
         """Print The Currently Playing Song On LastFM, last played if no song is playing.""" 
         r = requests.get('http://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=' + str(self.config["USERNAME"]) + '&' + 'api_key=' + str(self.config["API_KEY"]) + '&format=json' + '&limit=1')
         json_output = r.json()
-        track_name = json_output['recenttracks']['track']['name']
-        artist_name = json_output['recenttracks']['track']['artist']['#text']
-        album_name = json_output['recenttracks']['track']['album']['#text']
-        song_url = json_output['recenttracks']['track']['url']
-        formated_message = "Now Playing\\Last Played" + "\n" + "Track: " + str(track_name) + "\n" + "Artist: " + str(artist_name) + "\n" + "Album: " + str(album_name) + "\n" + "Song URL: " + str(song_url)
+        playing = json_output['recenttracks']['track'][0]['@attr'].get('nowplaying', False)
+        if playing == True:
+            track_name = json_output['recenttracks']['track'][0]['name']
+            artist_name = json_output['recenttracks']['track'][0]['artist']['#text']
+            album_name = json_output['recenttracks']['track'][0]['album']['#text']
+            song_url = json_output['recenttracks']['track'][0]['url']
+            formated_message = "Now Playing" + "\n" + "Track: " + track_name + "\n" + "Artist: " + artist_name + "\n" + "Album: " + album_name + "\n" + "Song URL: " + song_url
+        else:
+            track_name = json_output['recenttracks']['track'][0]['name']
+            artist_name = json_output['recenttracks']['track'][0]['artist']['#text']
+            album_name = json_output['recenttracks']['track'][0]['album']['#text']
+            song_url = json_output['recenttracks']['track'][0]['url']
+            formated_message = "Last Played" + "\n" + "Track: " + str(track_name) + "\n" + "Artist: " + str(artist_name) + "\n" + "Album: " + str(album_name) + "\n" + "Song URL: " + str(song_url)
         await utils.answer(message, str(formated_message))
