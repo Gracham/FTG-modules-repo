@@ -44,7 +44,8 @@ class LastfmMod(loader.Module):
         """Print The Currently Playing Song On LastFM, last played if no song is playing.""" 
         r = requests.get('http://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=' + str(self.config["USERNAME"]) + '&' + 'api_key=' + str(self.config["API_KEY"]) + '&format=json' + '&limit=1')
         json_output = r.json()
-        logger.error(str(json_output))
+        await utils.answer(message, str(json_output))
+
         playing = json_output['recenttracks']['track'][0]['@attr'].get('nowplaying', False)
         if playing == True:
             track_name = json_output['recenttracks']['track'][0]['name']
