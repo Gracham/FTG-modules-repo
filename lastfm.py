@@ -1,4 +1,5 @@
 # Some parts are Copyright (C) LakesideMiners (@LakesideMiners) 2021-Present
+# I DO NOT OFFER ANY SUPPORT!
 # All licensed under project license
 #    Friendly Telegram (telegram userbot)
 #    Copyright (C) 2018-2019 The Authors
