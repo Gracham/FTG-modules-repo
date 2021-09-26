@@ -60,5 +60,5 @@ class LastfmMod(loader.Module):
             album_name = json_output['recenttracks']['track'][0]['album']['#text']
             song_url = json_output['recenttracks']['track'][0]['url']
             date_played = json_output['recenttracks']['track'][0]['date']['#text']
-            formated_message = "Last Played" + "\n" + "Track: " + str(track_name) + "\n" + "Artist: " + str(artist_name) + "\n" + "Album: " + str(album_name) + "\n" + "Song URL: " + str(song_url) + "\n" + "Date Played: " + str(date_played)
+            formated_message = "Last Played" + "\n" + "Track: " + str(track_name) + "\n" + "Artist: " + str(artist_name) + "\n" + "Album: " + str(album_name) + "\n" + "Song URL: " + str(song_url) + "\n" + "Date Played: " + str(date_played) + " UTC"
         await utils.answer(message, str(formated_message))
