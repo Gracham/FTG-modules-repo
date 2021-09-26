@@ -45,10 +45,10 @@ class LastfmMod(loader.Module):
         r = requests.get('http://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=' + str(self.config["USERNAME"]) + '&' + 'api_key=' + str(self.config["API_KEY"]) + '&format=json' + '&limit=1')
         json_output = r.json()
         try:
-            playing = json_output['recenttracks']['track'][0]['@attr'].get('nowplaying', False)
+            playing = json_output['recenttracks']['track'][0]['@attr']['nowplaying']
         except KeyError:
             playing = False
-        if playing == True:
+        if playing == 'true':
             track_name = json_output['recenttracks']['track'][0]['name']
             artist_name = json_output['recenttracks']['track'][0]['artist']['#text']
             album_name = json_output['recenttracks']['track'][0]['album']['#text']
