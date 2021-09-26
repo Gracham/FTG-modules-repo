@@ -46,7 +46,7 @@ class LastfmMod(loader.Module):
         json_output = r.json()
         try:
             playing = json_output['recenttracks']['track'][0]['@attr'].get('nowplaying', False)
-        except:
+        except KeyError:
             playing = False
         if playing == True:
             track_name = json_output['recenttracks']['track'][0]['name']
