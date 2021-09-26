@@ -46,14 +46,18 @@ class LastfmMod(loader.Module):
         json_output = r.json()
         try:
             playing = json_output['recenttracks']['track'][0]['@attr']['nowplaying']
+            pass
         except KeyError:
             playing = False
+            pass
+
         if playing == 'true':
             track_name = json_output['recenttracks']['track'][0]['name']
             artist_name = json_output['recenttracks']['track'][0]['artist']['#text']
             album_name = json_output['recenttracks']['track'][0]['album']['#text']
-            song_url = json_output['recenttracks']['track'][0]['url']
+            song_url = json_output['recenttracks']['track'][0]['url'] 
             formated_message = "Now Playing" + "\n" + "Track: " + track_name + "\n" + "Artist: " + artist_name + "\n" + "Album: " + album_name + "\n" + "Song URL: " + song_url
+            await utils.answer(message, str(formated_message))
         else:
             track_name = json_output['recenttracks']['track'][0]['name']
             artist_name = json_output['recenttracks']['track'][0]['artist']['#text']
