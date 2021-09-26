@@ -43,25 +43,20 @@ class LastfmMod(loader.Module):
     async def npcmd(self, message):
         """Print The Currently Playing Song On LastFM, last played if no song is playing.""" 
         # First we checck if the user has a username and key entered
-        if self.config["USERNAME"] or self.config["API_KEY"] == None:
-            missing_config_message = "You are missing either the username, or the api key! Set these on the configuration page(The website that you had to go to to set up the userbot!)"
-            await utils.answer(message, str(missing_config_message))
+        r = requests.get('http://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=' + str(self.config["USERNAME"]) + '&' + 'api_key=' + str(self.config["API_KEY"]) + '&format=json' + '&limit=1')
+        json_output = r.json()
+        if "nowplaying" in json_output:
+            track_name = json_output['recenttracks']['track'][0]['name']
+            artist_name = json_output['recenttracks']['track'][0]['artist']['#text']
+            album_name = json_output['recenttracks']['track'][0]['album']['#text']
+            song_url = json_output['recenttracks']['track'][0]['url']
+            formated_message = "Now Playing" + "\n" + "Track: " + track_name + "\n" + "Artist: " + artist_name + "\n" + "Album: " + album_name + "\n" + "Song URL: " + song_url
         else:
-            r = requests.get('http://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=' + str(self.config["USERNAME"]) + '&' + 'api_key=' + str(self.config["API_KEY"]) + '&format=json' + '&limit=1')
-            json_output = r.json()
-            if "nowplaying" in json_output:
-                track_name = json_output['recenttracks']['track'][0]['name']
-                artist_name = json_output['recenttracks']['track'][0]['artist']['#text']
-                album_name = json_output['recenttracks']['track'][0]['album']['#text']
-                song_url = json_output['recenttracks']['track'][0]['url']
-                formated_message = "Now Playing" + "\n" + "Track: " + track_name + "\n" + "Artist: " + artist_name + "\n" + "Album: " + album_name + "\n" + "Song URL: " + song_url
-                await utils.answer(message, str(formated_message))
-            else:
-                track_name = json_output['recenttracks']['track'][0]['name']
-                artist_name = json_output['recenttracks']['track'][0]['artist']['#text']
-                album_name = json_output['recenttracks']['track'][0]['album']['#text']
-                song_url = json_output['recenttracks']['track'][0]['url']
-                date_played = json_output['recenttracks']['track'][0]['date']['#text']
-                formated_message = "Last Played" + "\n" + "Track: " + str(track_name) + "\n" + "Artist: " + str(artist_name) + "\n" + "Album: " + str(album_name) + "\n" + "Song URL: " + str(song_url) + "\n" + "Date Played: " + str(date_played)
-                await utils.answer(message, str(formated_message))
+            track_name = json_output['recenttracks']['track'][0]['name']
+            artist_name = json_output['recenttracks']['track'][0]['artist']['#text']
+            album_name = json_output['recenttracks']['track'][0]['album']['#text']
+            song_url = json_output['recenttracks']['track'][0]['url']
+            date_played = json_output['recenttracks']['track'][0]['date']['#text']
+            formated_message = "Last Played" + "\n" + "Track: " + str(track_name) + "\n" + "Artist: " + str(artist_name) + "\n" + "Album: " + str(album_name) + "\n" + "Song URL: " + str(song_url) + "\n" + "Date Played: " + str(date_played)
+        await utils.answer(message, str(formated_message))
 
