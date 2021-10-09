@@ -56,8 +56,9 @@ class LastfmMod(loader.Module):
             track_name = json_output['recenttracks']['track'][0]['name']
             artist_name = json_output['recenttracks']['track'][0]['artist']['#text']
             album_name = json_output['recenttracks']['track'][0]['album']['#text']
-            song_url = json_output['recenttracks']['track'][0]['url'] 
-            formated_message = "Now Playing" + "\n" + "Track: " + track_name + "\n" + "Artist: " + artist_name + "\n" + "Album: " + album_name + "\n" + "Song URL: " + song_url
+            song_url = json_output['recenttracks']['track'][0]['url']
+
+            formated_message = "<b>Now Playing</b>" + "\n" + "<b>Track: </b>" + track_name + "\n" + "<b>Artist: </b> " + artist_name + "\n" + "<b>Album: </b>" + album_name + "\n" + "<a href='" + song_url + "'>" + "LastFM URL" + "</a>"
             await utils.answer(message, str(formated_message))
         else:
             track_name = json_output['recenttracks']['track'][0]['name']
@@ -65,5 +66,5 @@ class LastfmMod(loader.Module):
             album_name = json_output['recenttracks']['track'][0]['album']['#text']
             song_url = json_output['recenttracks']['track'][0]['url']
             date_played = json_output['recenttracks']['track'][0]['date']['#text']
-            formated_message = "Last Played" + "\n" + "Track: " + str(track_name) + "\n" + "Artist: " + str(artist_name) + "\n" + "Album: " + str(album_name) + "\n" + "Song URL: " + str(song_url) + "\n" + "Date Played: " + str(date_played) + " UTC"
+            formated_message = "<b>Last Played</b>" + "\n" + "<b>Track: </b>" + track_name + "\n" + "<b>Artist: </b> " + artist_name + "\n" + "<b>Album: </b>" + album_name + "\n" + "<a href='" + song_url + "'>" + "LastFM URL" + "</a>" + "\n" + "<b>Played On: </b>" + date_played + "UTC"
             await utils.answer(message, str(formated_message))
