@@ -19,8 +19,10 @@ For the most part, all of the modules that are not my own will be the same as Hi
 # List Of Moudles made by LakesideMiners
 - timetill
 - fox
+- lastfm
 
 # Todo
 - [ ] Get fox module to show image properly(is it editing too fast? Or is it the sheri api? Unlikly as posting a link manuly embeds right.)
-- [ ] Make LastFM Module(use the LastFM Lib or just use requests?
-- [ ] 
+- [x] Make LastFM Module
+- [ ] create APIless youtube serach module
+- [ ] add more todos

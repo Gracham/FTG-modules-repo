@@ -20,6 +20,7 @@ stickers
 terminal
 translate
 tts
+recv
 timetill
 typer
 urbandictionary
