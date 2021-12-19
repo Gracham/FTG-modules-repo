@@ -39,8 +39,9 @@ class PrettyTimeTillMod(loader.Module):
         difference = stop - datetime.datetime.now()
         count_hours, rem = divmod(difference.seconds, 3600)
         count_minutes, count_seconds = divmod(rem, 60)
+        left_hour_fix = count_hours + 7
         left_day = str(difference.days)
-        left_hour = str(count_hours)
+        left_hour = str(left_hour_fix)
         left_min = str(count_minutes)
         left_second = str(count_seconds)
         
