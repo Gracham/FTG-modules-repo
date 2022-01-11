@@ -40,4 +40,5 @@ class AlphaMod(loader.Module):
         input_string = utils.get_args_raw(message)
         res = client.query(input_string)
         output = next(res.results).text
-        await utils.answer(message, output)
+        full_string = ("Input: " + input_string + "\n" + "Output: " + output)
+        await utils.answer(message, full_string)
