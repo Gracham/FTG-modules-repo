@@ -16,7 +16,7 @@
 
 import asyncio
 import logging
-from wolfram import App
+import wolframalpha
 from .. import loader, utils
 
 logger = logging.getLogger(__name__)
@@ -35,8 +35,11 @@ class AlphaMod(loader.Module):
     @loader.unrestricted  # Security setting to change who can use the command (defaults to owner | sudo)
     async def wacmd(self, message):
         """Do the search"""
-        wolfram = App(self.config["APP_ID"])
+        app_key = App(self.config["APP_ID"])
+        client = wolframalpha.Client(app_key)
         input_string = utils.get_args_raw(message)
-        output = wolfram.short(str(input_string))
+        res = client.query(input_string)
+        output = next(res.results).text
+        
         
         await utils.answer(message, output)
