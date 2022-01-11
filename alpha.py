@@ -37,5 +37,6 @@ class AlphaMod(loader.Module):
         """Do the search"""
         wolfram = App(self.config["APP_ID"])
         input_string = utils.get_args_raw(message)
-        output = wolfram.short(input_string)
-        await utils.answer(message, print(output))
+        output = wolfram.short(str(input_string))
+        
+        await utils.answer(message, output))
