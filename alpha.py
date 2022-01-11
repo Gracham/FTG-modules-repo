@@ -31,11 +31,11 @@ class AlphaMod(loader.Module):
 
     def __init__(self):
         self.config = loader.ModuleConfig("APP_ID", None, lambda m: self.strings("doc_app_id", m))
-        wolfram = App(self.config["APP_ID"])
         
     @loader.unrestricted  # Security setting to change who can use the command (defaults to owner | sudo)
     async def wacmd(self, message):
         """Do the search"""
+        wolfram = App(self.config["APP_ID"])
         input_string = utils.get_args_raw(message)
         output = wolfram.short(input_string)
         await utils.answer(message, print(output))
