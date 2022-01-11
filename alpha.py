@@ -35,11 +35,9 @@ class AlphaMod(loader.Module):
     @loader.unrestricted  # Security setting to change who can use the command (defaults to owner | sudo)
     async def wacmd(self, message):
         """Do the search"""
-        app_key = App(self.config["APP_ID"])
+        app_key = self.config["APP_ID"]
         client = wolframalpha.Client(app_key)
         input_string = utils.get_args_raw(message)
         res = client.query(input_string)
         output = next(res.results).text
-        
-        
         await utils.answer(message, output)
