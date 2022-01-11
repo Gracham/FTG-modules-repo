@@ -31,8 +31,7 @@ class AlphaMod(loader.Module):
 
     def __init__(self):
         self.config = loader.ModuleConfig("APP_ID", None, lambda m: self.strings("doc_app_id", m))
-        app_id = getfixture(self.config["APP_ID"])
-        client = Client(app_id)
+        client = Client(self.config["APP_ID"])
     @loader.unrestricted  # Security setting to change who can use the command (defaults to owner | sudo)
     async def wacmd(self, message):
         """Do the search"""
