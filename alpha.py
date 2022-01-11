@@ -39,4 +39,4 @@ class AlphaMod(loader.Module):
         input_string = utils.get_args_raw(message)
         output = wolfram.short(str(input_string))
         
-        await utils.answer(message, output))
+        await utils.answer(message, output)
