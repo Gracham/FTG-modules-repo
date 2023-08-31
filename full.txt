@@ -22,7 +22,6 @@ spam
 speedtest
 stickers
 terminal
-translate
 tts
 typer
 urbandictionary
